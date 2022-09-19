@@ -1,7 +1,7 @@
 
 import { CiudadEntity } from '../ciudad/ciudad.entity';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
-import { Column, Entity,ManyToOne, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Column, Entity,ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class RestauranteEntity {
