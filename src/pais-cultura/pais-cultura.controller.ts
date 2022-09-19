@@ -16,28 +16,28 @@ export class PaisCulturaController {
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Post(":culturaId/paises/:paisId")
-    @HasRoles(Role.Editor, Role.Admin)
+    @HasRoles(Role.Editor, Role.Admin, Role.EditorPais)
     async addPaisToCultura(@Param('culturaId') culturaId: string, @Param('paisId') paisId: string){
         return this.paisCulturaService.addPaisToCultura(culturaId, paisId)
     }
         
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Get(':culturaId/paises')
-    @HasRoles(Role.Lector, Role.Admin)
+    @HasRoles(Role.Lector, Role.Admin, Role.LectorPais)
     async findPaisesFromCultura(@Param('culturaId') culturaId: string){
         return this.paisCulturaService.findPaisesFromCultura(culturaId);
     }
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Get(':culturaId/paises/:paisId')
-    @HasRoles(Role.Lector, Role.Admin)
+    @HasRoles(Role.Lector, Role.Admin, Role.LectorPais)
     async findPaisFromCultura(@Param('culturaId') culturaId: string, @Param('paisId') paisId: string){
         return this.paisCulturaService.findPaisFromCultura(culturaId, paisId);
     }
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Put(':culturaId/paises')
-    @HasRoles(Role.Editor, Role.Admin)
+    @HasRoles(Role.Editor, Role.Admin, Role.EditorPais)
     async associateRecetaToCultura(@Param('culturaId') culturaId: string, @Body() paisDto: PaisDto){
         const pais: PaisEntity = plainToInstance(PaisEntity, paisDto);
         return this.paisCulturaService.updateCulturasPais(culturaId, pais);
@@ -45,7 +45,7 @@ export class PaisCulturaController {
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Delete(':culturaId/paises/:paisId')
-    @HasRoles(Role.Borrar, Role.Admin)
+    @HasRoles(Role.Borrar, Role.Admin, Role.BorrarPais)
     @HttpCode(204)
     async deleteRecetaFromCultura(@Param('culturaId') culturaId: string, @Param('paisId') paisId: string){
         return await this.paisCulturaService.deletePaisFromCultura(culturaId, paisId);

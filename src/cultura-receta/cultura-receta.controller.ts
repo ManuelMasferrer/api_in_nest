@@ -17,35 +17,35 @@ export class CulturaRecetaController {
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Get(':culturaId/recetas')
-    @HasRoles(Role.Lector, Role.Admin)
+    @HasRoles(Role.Lector, Role.Admin, Role.LectorReceta)
     async findRecetasFromCultura(@Param('culturaId') culturaId: string){
         return await this.culturaRecetaService.findRecetasFromCultura(culturaId);
     }
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Get(':culturaId/recetas/:recetaId')
-    @HasRoles(Role.Lector, Role.Admin)
+    @HasRoles(Role.Lector, Role.Admin, Role.LectorReceta)
     async findRecetaFromCultura(@Param('culturaId') culturaId: string, @Param('recetaId') recetaId: string){
         return await this.culturaRecetaService.findRecetaFromCultura(culturaId, recetaId);
     }
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Get(':recetaId/cultura')
-    @HasRoles(Role.Lector, Role.Admin)
+    @HasRoles(Role.Lector, Role.Admin, Role.LectorReceta)
     async findCulturaFromReceta(@Param('recetaId') recetaId: string){
         return await this.culturaRecetaService.findCulturaFromReceta(recetaId);
     }
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Post(':culturaId/recetas/:recetaId')
-    @HasRoles(Role.Editor, Role.Admin)
+    @HasRoles(Role.Lector, Role.Admin, Role.EditorReceta)
     async addRecetaToCultura(@Param('culturaId') culturaId: string, @Param('recetaId') recetaId: string){
         return await this.culturaRecetaService.addRecetaToCultura(culturaId, recetaId);
     }
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Put(':culturaId/recetas')
-    @HasRoles(Role.Editor, Role.Admin)
+    @HasRoles(Role.Editor, Role.Admin, Role.EditorReceta)
     async associateRecetaToCultura(@Param('culturaId') culturaId: string, @Body() recetaDto: RecetaDto){
         const receta: RecetaEntity = plainToInstance(RecetaEntity, recetaDto);
         return await this.culturaRecetaService.associateRecetaCultura(culturaId, receta);
@@ -54,7 +54,7 @@ export class CulturaRecetaController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Delete(':culturaId/recetas/:recetaId')
     @HttpCode(204)
-    @HasRoles(Role.Borrar, Role.Admin)
+    @HasRoles(Role.Borrar, Role.Admin, Role.BorrarReceta)
     async deleteRecetaFromCultura(@Param('culturaId') culturaId: string, @Param('recetaId') recetaId: string){
         return await this.culturaRecetaService.deleteRecetaToCultura(culturaId, recetaId);
     }

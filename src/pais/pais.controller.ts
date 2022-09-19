@@ -16,21 +16,21 @@ export class PaisController {
     
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Get()
-    @HasRoles(Role.Lector, Role.Admin)
+    @HasRoles(Role.Lector, Role.Admin, Role.LectorPais)
     async findAll() {
         return await this.paisService.findAll();
     }
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Get(':paisId')
-    @HasRoles(Role.Lector, Role.Admin)
+    @HasRoles(Role.Lector, Role.Admin, Role.LectorPais)
     async findOne(@Param('paisId') paisId: string){
         return await this.paisService.findOne(paisId);
     }
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Post()
-    @HasRoles(Role.Editor, Role.Admin)
+    @HasRoles(Role.Editor, Role.Admin, Role.EditorPais)
     async create(@Body() paisDto: PaisDto) {
         const pais: PaisEntity = plainToInstance(PaisEntity, paisDto);
         return await this.paisService.create(pais);
@@ -38,7 +38,7 @@ export class PaisController {
     
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Put(':paisId')
-    @HasRoles(Role.Editor, Role.Admin)
+    @HasRoles(Role.Editor, Role.Admin, Role.EditorPais)
     async update(@Param('paisId') paisId: string, @Body() paisDto: PaisDto){
         const pais: PaisEntity = plainToInstance(PaisEntity, paisDto);
         return await this.paisService.update(paisId, pais);
@@ -46,7 +46,7 @@ export class PaisController {
 
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Delete(':paisId')
-    @HasRoles(Role.Borrar, Role.Admin)
+    @HasRoles(Role.Borrar, Role.Admin, Role.BorrarPais)
     @HttpCode(204)
     async delete(@Param('paisId') paisId: string){
         return await this.paisService.delete(paisId)
