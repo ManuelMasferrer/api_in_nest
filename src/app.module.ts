@@ -25,6 +25,8 @@ import { ProductoEntity } from './producto/producto.entity';
 import { CategoriaproductoEntity } from './categoriaproducto/categoriaproducto.entity';
 import { CulturaRestauranteModule } from './cultura-restaurante/cultura-restaurante.module';
 import { CulturaProductoModule } from './cultura-producto/cultura-producto.module';
+import { UsuarioModule } from './usuario/usuario.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -62,6 +64,8 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
       synchronize: true,
       keepConnectionAlive: true,
     }),
+    UsuarioModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

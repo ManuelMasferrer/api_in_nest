@@ -1,13 +1,16 @@
+import { Role } from "./role.enum";
+
 export class Usuario {
     id: number;
-    nombre: string;
-    contrasena: string;
-    roles: string[];
+    username: string;
+    password: string;
+    roles: Role[];
 
-    constructor(id: number, nombre: string, contrasena: string, roles: string[]){
+    constructor(id: number, username: string, password: string, roles: Role[]) {
         this.id = id;
-        this.nombre = nombre;
-        this.contrasena = contrasena;
-        this.roles = this.roles;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+
     }
 }

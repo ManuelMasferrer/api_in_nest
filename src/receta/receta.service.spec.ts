@@ -72,8 +72,6 @@ describe('RecetaService', () => {
   });
 
   it('create debe crear un nuevo museo', async () => {
-    
-    // await culturaData();
 
     const receta: RecetaEntity = {
       id: "",

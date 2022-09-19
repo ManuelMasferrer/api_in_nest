@@ -1,13 +1,13 @@
-import { UsuarioController } from './usuario.controller';
-import { UsuarioService } from './usuario.service';
 import { Module } from '@nestjs/common';
+import { UsuarioService } from './usuario.service';
+import { UsuarioController } from './usuario.controller';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtService } from '@nestjs/jwt';
 
-
 @Module({
-    controllers: [UsuarioController],
-    providers: [UsuarioService, AuthService, JwtService],
-    exports: [UsuarioService],
+  providers: [UsuarioService, AuthService, JwtService],
+  controllers: [UsuarioController],
+  exports: [UsuarioService]
 })
-export class UsuarioModule { }
+export class UsuarioModule {}
+

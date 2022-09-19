@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Repository } from 'typeorm';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
-import { RecetaEntity } from '../receta/receta.entity';
 import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { faker } from '@faker-js/faker';
@@ -166,7 +165,6 @@ describe('PaisCulturaService', () => {
   });
 
   it('deleteCulturaFromPais debe eliminar una cultura gastronomica de un pais', async () => {
-    // const culturagastronomica: CulturaGastronomicaEntity = culturagastronomica;
     
     await service.deletePaisFromCultura(culturagastronomica.id, pais.id);  
     const storedCulturaGastronomica: CulturaGastronomicaEntity = await culturaGastronomicaRepository.findOne({where: {id: culturagastronomica.id}, relations: ["paises"]});

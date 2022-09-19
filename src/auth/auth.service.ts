@@ -1,28 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { UsuarioService } from '../usuario/usuario.service';
 import { JwtService } from '@nestjs/jwt';
-import constants from 'src/shared/security/constants';
+import constantes from '../shared/security/constantes';
+import { Usuario } from '../usuario/usuario.entity';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private readonly usersService: UsuarioService,
-    private readonly jwtService: JwtService,
-  ) {}
+    constructor(
+        private usuarioService: UsuarioService,
+        private jwtService: JwtService,
+    ){}
 
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(username);
-    if (user && user.password === pass) {
-      const { password, ...result } = user;
-      return result;
+    async validarUsuario(username: string, pass: string): Promise<any>{
+     const usuario: Usuario = await this.usuarioService.findOne(username);
+     console.log(usuario)
+     if (usuario && usuario.password === pass) {
+        const {password, ...result} = usuario;
+        return result;
+     }
+     return null;   
     }
-    return null;
-  }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
-    return {
-      access_token: this.jwtService.sign(payload, { privateKey: constants.JWT_SECRET, expiresIn:constants.JWT_EXPIRES_IN }),
-    };
-  }
+    async login(req: any) {
+        const payload = { username: req.user.username, sub: req.user.id, roles: req.user.roles };
+        console.log(payload);
+        return {
+            token: this.jwtService.sign(payload, { privateKey: constantes.JWT_SECRET }),
+        };
+    }
 }
+
