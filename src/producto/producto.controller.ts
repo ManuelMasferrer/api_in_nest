@@ -1,4 +1,8 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Role } from 'src/usuario/role.enum';
+import { HasRoles } from 'src/usuario/roles.decorator';
 import { ProductoService } from './producto.service';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { ProductoDto } from './producto.dto';
@@ -9,31 +13,38 @@ import { plainToInstance } from 'class-transformer';
 @UseInterceptors(BusinessErrorsInterceptor)
 export class ProductoController {
     constructor(private readonly productoService: ProductoService){}
-
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Get()
+    @HasRoles(Role.Lector, Role.Admin, Role.LectorProducto)
     async findAll() {
       return this.productoService.findAll();
     }
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Get(':productoId')
-    async findOne(@Param('productoId') productoId: string) {
+    @HasRoles(Role.Lector, Role.Admin, Role.LectorProducto)
+    async findOne(@Param('productoId') productoId: string): Promise<ProductoEntity> {
         return this.productoService.findOne(productoId);
     }
-
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Post()
-    async create(@Body() productoDto: ProductoDto) {
+    @HasRoles(Role.Editor, Role.Admin, Role.EditorProducto)
+    @Post()
+    async create(@Body() productoDto: ProductoDto): Promise<ProductoEntity> {
         const producto: ProductoEntity = plainToInstance(ProductoEntity, productoDto);
         return this.productoService.create(producto);
     }
-
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Put(':productoId')
-    async update(@Param('productoId') productoId: string, @Body() productoDto: ProductoDto) {
+    @HasRoles(Role.Editor, Role.Admin, Role.EditorProducto)
+    async update(@Param('productoId') productoId: string, @Body() productoDto: ProductoDto): Promise<ProductoEntity> {
         const producto: ProductoEntity = plainToInstance(ProductoEntity, productoDto);
         return this.productoService.update(productoId, producto);
     }
-
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Delete(':productoId')
+    @HasRoles(Role.Borrar, Role.Admin, Role.BorrarProducto)
     @HttpCode(204)
-    async delete(@Param('productoId') productoId: string) {
+    async delete(@Param('productoId') productoId: string): Promise<void> {
         return this.productoService.delete(productoId);
     }
 
