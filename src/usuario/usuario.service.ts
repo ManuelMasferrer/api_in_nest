@@ -29,7 +29,13 @@ export class UsuarioService {
         { id: 22 , username: "usuarioBorrarCiudad", password: "X$GvZ4vQ#5q1", roles:  [Role.BorrarCiudad] } ,
         { id: 23 , username: "usuarioLectorCategoriaProducto", password: "zL53pCd81$Kb", roles:  [Role.LectorCategoria] } ,
         { id: 24 , username: "usuarioEditorCategoriaProducto", password: "dE@w2Y$0a0M7", roles:  [Role.EditorCategoria] } ,
-        { id: 25 , username: "usuarioBorrarCategoriaProducto", password: "zR8PLy75Yv%%", roles:  [Role.BorrarCategoria] } 
+        { id: 25 , username: "usuarioBorrarCategoriaProducto", password: "zR8PLy75Yv%%", roles:  [Role.BorrarCategoria] } ,
+        { id: 26 , username: "usuarioCulturaGastronomica", password: "zR8PLy75Yv%*", roles:  [Role.LectorCultura] } ,
+        { id: 27 , username: "usuarioCulturaGastronomica", password: "zR8PLy75Yv%*", roles:  [Role.EditorCultura] } ,
+        { id: 28 , username: "usuarioCulturaGastronomica", password: "zR8PLy75Yv%*", roles:  [Role.BorrarCultura] } ,
+        { id: 29 , username: "usuarioRegion", password: "zR8PLy75Yv%*", roles:  [Role.LectorRegion] } ,
+        { id: 30 , username: "usuarioRegion", password: "zR8PLy75Yv%+", roles:  [Role.EditorRegion] } ,
+        { id: 31 , username: "usuarioRegion", password: "zR8PLy75Yv%-", roles:  [Role.BorrarRegion] } 
     ];
     async findOne(username: string): Promise<Usuario | undefined> {
         return this.usuarios.find( (usuario) => usuario.username === username);
