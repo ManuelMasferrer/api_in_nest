@@ -24,5 +24,8 @@ export enum Role {
     LectorCategoria  = "lectorcategoria", 
     EditorCategoria  = "editorcategoria", 
     BorrarCategoria  = "borrarcategoria",
+    LectorRegion  = "lectorregion", 
+    EditorRegion  = "editorregion", 
+    BorrarRegion  = "borrarregion", 
    
   }
