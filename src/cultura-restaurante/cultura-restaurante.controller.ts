@@ -8,6 +8,7 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { Role } from '../usuario/role.enum';
 import { HasRoles } from '../usuario/roles.decorator';
 import { RolesGuard } from '../auth/guards/roles.guard';
+import { CulturaGastronomicaEntity } from 'src/culturagastronomica/culturagastronomica.entity';
 @Controller('cultura-restaurante')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class CulturaRestauranteController {
@@ -33,7 +34,7 @@ export class CulturaRestauranteController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Put(':culturaId/restaurantes')
     @HasRoles(Role.Editor, Role.Admin, Role.EditorCultura)
-    async associateProductosCultura(@Body() restaurantesDto: RestauranteDto[], @Param('culturaId') culturaId: string): Promise<import("e:/Documentos/MISO/Semestre 4/APIS/MISW4403_202214_Equipo28/src/culturagastronomica/culturagastronomica.entity").CulturaGastronomicaEntity>{
+    async associateProductosCultura(@Body() restaurantesDto: RestauranteDto[], @Param('culturaId') culturaId: string): Promise<CulturaGastronomicaEntity>{
        const restaurantes = plainToInstance(RestauranteEntity, restaurantesDto)
        return this.culturaRestauranteService.associateRestauranteCultura(culturaId, restaurantes);
     }
