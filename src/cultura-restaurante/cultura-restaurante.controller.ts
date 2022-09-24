@@ -1,13 +1,13 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { RestauranteDto } from 'src/restaurante/restaurante.dto';
-import { RestauranteEntity } from 'src/restaurante/restaurante.entity';
+import { RestauranteDto } from '../restaurante/restaurante.dto';
+import { RestauranteEntity } from '../restaurante/restaurante.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { CulturaRestauranteService } from './cultura-restaurante.service';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { Role } from 'src/usuario/role.enum';
-import { HasRoles } from 'src/usuario/roles.decorator';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { Role } from '../usuario/role.enum';
+import { HasRoles } from '../usuario/roles.decorator';
+import { RolesGuard } from '../auth/guards/roles.guard';
 @Controller('cultura-restaurante')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class CulturaRestauranteController {
