@@ -8,7 +8,7 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { Role } from '../usuario/role.enum';
 import { HasRoles } from '../usuario/roles.decorator';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { CulturaGastronomicaEntity } from 'src/culturagastronomica/culturagastronomica.entity';
+import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 @Controller('cultura-producto')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class CulturaProductoController {
