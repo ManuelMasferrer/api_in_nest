@@ -4,10 +4,10 @@ import { ProductoDto } from '../producto/producto.dto';
 import { ProductoEntity } from '../producto/producto.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { CulturaProductoService } from './cultura-producto.service';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { Role } from 'src/usuario/role.enum';
-import { HasRoles } from 'src/usuario/roles.decorator';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { Role } from '../usuario/role.enum';
+import { HasRoles } from '../usuario/roles.decorator';
+import { RolesGuard } from '../auth/guards/roles.guard';
 @Controller('cultura-producto')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class CulturaProductoController {
