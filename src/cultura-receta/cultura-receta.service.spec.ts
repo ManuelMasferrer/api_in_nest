@@ -7,6 +7,7 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { faker } from '@faker-js/faker';
 import { RegionEntity } from '../region/region.entity';
+import { CACHE_MANAGER } from '@nestjs/common';
 
 
 describe('CulturaRecetaService', () => {
@@ -19,7 +20,7 @@ describe('CulturaRecetaService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [...TypeOrmTestingConfig()],
-      providers: [CulturaRecetaService],
+      providers: [CulturaRecetaService, { provide: CACHE_MANAGER, useFactory: jest.fn() }] ,
     }).compile();
 
     service = module.get<CulturaRecetaService>(CulturaRecetaService);
