@@ -12,6 +12,5 @@ export class CiudadEntity {
 
     @OneToMany(() => RestauranteEntity, restaurante => restaurante.ciudad)      
     restaurantes: RestauranteEntity[];
-   
-    
+       
 }
