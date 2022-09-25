@@ -8,22 +8,11 @@ import { BusinessError, BusinessLogicException } from '../shared/errors/business
 export class RecetaService {
     constructor(
         @InjectRepository(RecetaEntity)
-
-        private readonly recetaRepository: Repository<RecetaEntity>,
-
-        @Inject(CACHE_MANAGER)
-        private readonly cacheManager: Cache
+        private readonly recetaRepository: Repository<RecetaEntity>
     ){}
 
     async findAll(): Promise<RecetaEntity[]>{
-        const cached: RecetaEntity[] = await this.cacheManager.get<RecetaEntity[]>(this.cacheKey);
-        if(!cached){
-            const recetas: RecetaEntity[] = await this.recetaRepository.find({ relations: ['culturagastronomica'] });
-            await this.cacheManager.set(this.cacheKey, recetas);
-            return recetas;
-        }
-        return cached;
-
+        return await this.recetaRepository.find({ relations: ['culturagastronomica'] });
     }
 
     async findOne(id: string): Promise<RecetaEntity> {

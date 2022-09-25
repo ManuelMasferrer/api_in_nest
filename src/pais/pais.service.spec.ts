@@ -8,8 +8,6 @@ import { RegionEntity } from "../region/region.entity";
 import { PaisEntity } from './pais.entity';
 import { PaisService } from "./pais.service";
 import { PaisDto } from "./pais.dto";
-import { CacheModule, CACHE_MANAGER } from "@nestjs/common";
-import { Cache } from 'cache-manager';
 
 describe('PaisService', () => {
     let service: PaisService;
@@ -21,8 +19,8 @@ describe('PaisService', () => {
 
     beforeEach(async () =>{
         const module: TestingModule = await Test.createTestingModule({
-            imports: [...TypeOrmTestingConfig(), CacheModule.register()],
-            providers: [PaisService, { provide: CACHE_MANAGER, useFactory: jest.fn() }],
+            imports: [...TypeOrmTestingConfig()],
+            providers: [PaisService],
         }).compile();
 
         service = module.get<PaisService>(PaisService);
@@ -55,11 +53,11 @@ describe('PaisService', () => {
         expect(service).toBeDefined();
     });
 
-    // it('findAll debe retornar todos los paises', async () =>{
-    //     const paises: PaisEntity[] = await service.findAll();
-    //     expect(paises).not.toBeNull();
-    //     expect(paises).toHaveLength(paisesList.length);
-    // });
+    it('findAll debe retornar todos los paises', async () =>{
+        const paises: PaisDto[] = await service.findAll();
+        expect(paises).not.toBeNull();
+        expect(paises).toHaveLength(paisesList.length);
+    });
 
     it('findOne debe retornar un pais por id', async () => {
         const storedPais: PaisDto = paisesList[0];
