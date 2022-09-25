@@ -18,7 +18,14 @@ export class RecetaService {
     ){}
 
     async findAll(): Promise<RecetaEntity[]>{
-        return await this.recetaRepository.find({ relations: ['culturagastronomica'] });
+ 
+        const cached: RecetaEntity[] = await this.cacheManager.get<RecetaEntity[]>(this.cacheKey);
+        if(!cached){
+            const recetas: RecetaEntity[] = await this.recetaRepository.find({ relations: ['culturagastronomica'] });
+            await this.cacheManager.set(this.cacheKey, recetas);
+            return recetas;
+        }
+        return cached;
     }
 
     async findOne(id: string): Promise<RecetaEntity> {
