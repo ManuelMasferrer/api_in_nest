@@ -7,18 +7,18 @@ import { Cache } from 'cache-manager';
 
 @Injectable()
 export class RecetaService {
+    cacheKey: string = "paises";
+
     constructor(
-        cacheKey: string = "recetas";
-         
         @InjectRepository(RecetaEntity)
+
         private readonly recetaRepository: Repository<RecetaEntity>,
-    
+
         @Inject(CACHE_MANAGER)
         private readonly cacheManager: Cache
     ){}
 
     async findAll(): Promise<RecetaEntity[]>{
- 
         const cached: RecetaEntity[] = await this.cacheManager.get<RecetaEntity[]>(this.cacheKey);
         if(!cached){
             const recetas: RecetaEntity[] = await this.recetaRepository.find({ relations: ['culturagastronomica'] });
@@ -26,6 +26,7 @@ export class RecetaService {
             return recetas;
         }
         return cached;
+
     }
 
     async findOne(id: string): Promise<RecetaEntity> {
