@@ -3,7 +3,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { CulturaRegionModule } from './cultura-region/cultura-region.module';
 import { RegionModule } from './region/region.module';
 import { CulturaGastronomicaModule } from './culturagastronomica/culturagastronomica.module';
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -64,6 +64,7 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
     }),
     UsuarioModule,
     AuthModule,
+    CacheModule.register()
   ],
   controllers: [AppController],
   providers: [AppService],
