@@ -1,14 +1,20 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RecetaEntity } from './receta.entity';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class RecetaService {
     constructor(
+        cacheKey: string = "recetas";
+         
         @InjectRepository(RecetaEntity)
-        private readonly recetaRepository: Repository<RecetaEntity>
+        private readonly recetaRepository: Repository<RecetaEntity>,
+    
+        @Inject(CACHE_MANAGER)
+        private readonly cacheManager: Cache
     ){}
 
     async findAll(): Promise<RecetaEntity[]>{
