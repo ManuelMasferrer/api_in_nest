@@ -43,7 +43,7 @@ export class CulturaRestauranteController {
     @Delete(':culturaId/restaurantes/:restauranteId')
     @HasRoles(Role.Borrar, Role.Admin, Role.BorrarCultura)
     @HttpCode(204)
-    async deleteArtworkMuseum(@Param('culturaId') culturaId: string, @Param('restauranteId') restauranteId: string): Promise<void>{
+    async deleteProductosCultura(@Param('culturaId') culturaId: string, @Param('restauranteId') restauranteId: string): Promise<void>{
        return this.culturaRestauranteService.deleteRestauranteToCultura(culturaId, restauranteId);
     }
 }
