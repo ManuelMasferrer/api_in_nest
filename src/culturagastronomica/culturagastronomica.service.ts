@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
@@ -6,13 +7,25 @@ import { CulturaGastronomicaEntity } from './culturagastronomica.entity';
 
 @Injectable()
 export class CulturagastronomicaService {
+    cacheKey: string = "cultura"
     constructor(
         @InjectRepository(CulturaGastronomicaEntity)
-        private readonly culturaRepository: Repository<CulturaGastronomicaEntity>
+        private readonly culturaRepository: Repository<CulturaGastronomicaEntity>,
+
+        @Inject(CACHE_MANAGER)
+        private readonly cacheManager: Cache
       ){}
 
+    
+
     async findAll(): Promise<CulturaGastronomicaEntity[]>{
-        return await this.culturaRepository.find({ relations: {region: true,},});
+        const cached: CulturaGastronomicaEntity[] = await this.cacheManager.get<CulturaGastronomicaEntity[]>(this.cacheKey);
+        if (!cached){
+            const culturas: CulturaGastronomicaEntity[] = await this.culturaRepository.find({ relations: {region: true,},});
+            await this.cacheManager.set(this.cacheKey, culturas);
+            return culturas;
+        }
+        return cached;
     }
 
     async finOne(id: string): Promise<CulturaGastronomicaEntity>{
