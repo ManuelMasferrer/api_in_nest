@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
@@ -6,13 +7,22 @@ import { RegionEntity } from './region.entity';
 
 @Injectable()
 export class RegionService {
+    cacheKey: string = "region"
     constructor(
         @InjectRepository(RegionEntity)
-        private readonly regionRepository: Repository<RegionEntity>
+        private readonly regionRepository: Repository<RegionEntity>,
+        @Inject(CACHE_MANAGER)
+        private readonly cacheManager: Cache
       ){}
 
     async findAll(): Promise<RegionEntity[]>{
-        return await this.regionRepository.find({ relations: {culturagastronomica: true,},});
+        const cached: RegionEntity[] = await this.cacheManager.get<RegionEntity[]>(this.cacheKey);
+        if (!cached){
+            const regiones: RegionEntity[] = await this.regionRepository.find({ relations: {culturagastronomica: true,},});
+            await this.cacheManager.set(this.cacheKey, regiones);
+            return regiones;
+        }
+        return cached;
     }
 
     async findOne(id: string): Promise<RegionEntity>{
