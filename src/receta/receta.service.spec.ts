@@ -16,6 +16,7 @@ describe('RecetaService', () => {
   let recetasList: RecetaEntity[];
   let regionData = new RegionEntity();
   let culturaGastronomicaData = new CulturaGastronomicaEntity();
+  let cacheManager: Cache;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -23,6 +24,8 @@ describe('RecetaService', () => {
       providers: [RecetaService, ],
     }).compile();
 
+    
+    // cacheManager = module.get<Cache>(CacheModule);
     service = module.get<RecetaService>(RecetaService);
     repository = module.get<Repository<RecetaEntity>>(getRepositoryToken(RecetaEntity));
     await seedDatabase();
@@ -52,11 +55,11 @@ describe('RecetaService', () => {
     expect(service).toBeDefined();
   });
 
-  // it('findAll debe retornar el listado de recetas', async () => {
-  //   const recetas: RecetaEntity[] = await service.findAll();
-  //   expect(recetas).not.toBeNull();
-  //   expect(recetas).toHaveLength(recetasList.length);
-  // });
+  it('findAll debe retornar el listado de recetas', async () => {
+    const recetas: RecetaEntity[] = await service.findAll();
+    expect(recetas).not.toBeNull();
+    expect(recetas).toHaveLength(recetasList.length);
+  });
 
   it('findOne debe retornar una receta identificada con un id', async () => {
     const storedReceta: RecetaEntity = recetasList[0];

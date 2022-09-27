@@ -54,11 +54,11 @@ describe('PaisService', () => {
         expect(service).toBeDefined();
     });
 
-    // it('findAll debe retornar todos los paises', async () =>{
-    //     const paises: PaisDto[] = await service.findAll();
-    //     expect(paises).not.toBeNull();
-    //     expect(paises).toHaveLength(paisesList.length);
-    // });
+    it('findAll debe retornar todos los paises', async () =>{
+        const paises: PaisDto[] = await service.findAll();
+        expect(paises).not.toBeNull();
+        expect(paises).toHaveLength(paisesList.length);
+    });
 
     it('findOne debe retornar un pais por id', async () => {
         const storedPais: PaisDto = paisesList[0];
