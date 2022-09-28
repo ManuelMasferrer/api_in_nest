@@ -24,8 +24,6 @@ describe('RecetaService', () => {
       providers: [RecetaService, ],
     }).compile();
 
-    
-    // cacheManager = module.get<Cache>(CacheModule);
     service = module.get<RecetaService>(RecetaService);
     repository = module.get<Repository<RecetaEntity>>(getRepositoryToken(RecetaEntity));
     await seedDatabase();

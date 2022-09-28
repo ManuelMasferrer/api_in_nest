@@ -6,6 +6,7 @@ import { CulturaGastronomicaEntity } from './culturagastronomica.entity';
 import { CulturagastronomicaService } from './culturagastronomica.service';
 import { faker } from '@faker-js/faker';
 import { RegionEntity } from '../region/region.entity';
+import { CacheModule } from '@nestjs/common';
 
 
 
@@ -18,7 +19,7 @@ describe('CulturagastronomicaService', () => {
 
     beforeEach(async () =>{
         const module: TestingModule = await Test.createTestingModule({
-            imports: [...TypeOrmTestingConfig()],
+            imports: [...TypeOrmTestingConfig(), CacheModule.register()],
             providers: [CulturagastronomicaService],
         }).compile();
 

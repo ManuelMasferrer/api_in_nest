@@ -6,6 +6,7 @@ import { TypeOrmTestingConfig } from "../shared/testing-utils/typeorm-testing-co
 import { Repository } from "typeorm/repository/Repository";
 import { RegionEntity } from "./region.entity";
 import { RegionService } from "./region.service";
+import { CacheModule } from "@nestjs/common";
 
 describe('RegionService', () => {
     let service: RegionService;
@@ -16,7 +17,7 @@ describe('RegionService', () => {
 
     beforeEach(async () =>{
         const module: TestingModule = await Test.createTestingModule({
-            imports: [...TypeOrmTestingConfig()],
+            imports: [...TypeOrmTestingConfig(), CacheModule.register()],
             providers: [RegionService],
         }).compile();
 

@@ -20,7 +20,7 @@ export class PaisService {
     async findAll(): Promise<PaisEntity[]>{
         const cached: PaisEntity[] = await this.cacheManager.get<PaisEntity[]>(this.cacheKey)
         if(!cached){
-            const paises: PaisEntity[] = await this.paisRepository.find();
+            const paises: PaisEntity[] = await this.paisRepository.find({ relations: {culturasgastronomicas: true,},});
             await this.cacheManager.set(this.cacheKey, paises);
             return paises;
         }
