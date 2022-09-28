@@ -25,10 +25,9 @@ export class PaisService {
             return paises;
         }
         return cached;
-        // return await this.paisRepository.find({ relations: {culturasgastronomicas: true,},});
     }
 
-    async findOne(id: string): Promise<PaisDto>{
+    async findOne(id: string): Promise<PaisEntity>{
         const pais: PaisEntity = await this.paisRepository.findOne({where: {id}});
         if (!pais)
             throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
@@ -36,7 +35,7 @@ export class PaisService {
         return pais;
     }
 
-    async create(pais: PaisEntity): Promise<PaisEntity>{
+    async create(pais: PaisDto): Promise<PaisDto>{
         return await this.paisRepository.save(pais);
     }
 

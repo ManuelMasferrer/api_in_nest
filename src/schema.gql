@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type RecetaEntity {
+  id: String!
+  nombre: String!
+  descripcion: String!
+  foto: String!
+  preparacion: String!
+  video: String!
+  culturagastronomica: CulturaGastronomicaEntity!
+}
+
+type PaisEntity {
+  nombre: String!
+  culturasgastronomicas: [CulturaGastronomicaEntity!]!
+}
+
+type CulturaGastronomicaEntity {
+  id: String!
+  nombre: String!
+  descripcion: String!
+  recetas: [RecetaEntity!]!
+}
+
+type Query {
+  recetas: [RecetaEntity!]!
+  receta(id: String!): RecetaEntity!
+  paises: [PaisEntity!]!
+  pais(id: String!): PaisEntity!
+}
+
+type Mutation {
+  createReceta(receta: RecetaDto!): RecetaEntity!
+  updateReceta(id: String!, pais: PaisDto!): PaisEntity!
+  deleteReceta(id: String!): String!
+  createPais(pais: PaisDto!): PaisEntity!
+  deletePais(id: String!): String!
+}
+
+input RecetaDto {
+  nombre: String!
+  descripcion: String!
+  foto: String!
+  preparacion: String!
+  video: String!
+}
+
+input PaisDto {
+  nombre: String!
+}
