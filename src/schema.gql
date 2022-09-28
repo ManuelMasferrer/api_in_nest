@@ -12,6 +12,11 @@ type RecetaEntity {
   culturagastronomica: CulturaGastronomicaEntity!
 }
 
+type PaisEntity {
+  nombre: String!
+  culturasgastronomicas: [CulturaGastronomicaEntity!]!
+}
+
 type CulturaGastronomicaEntity {
   id: String!
   nombre: String!
@@ -22,12 +27,16 @@ type CulturaGastronomicaEntity {
 type Query {
   recetas: [RecetaEntity!]!
   receta(id: String!): RecetaEntity!
+  paises: [PaisEntity!]!
+  pais(id: String!): PaisEntity!
 }
 
 type Mutation {
   createReceta(receta: RecetaDto!): RecetaEntity!
-  updateReceta(id: String!, receta: RecetaDto!): RecetaEntity!
+  updateReceta(id: String!, pais: PaisDto!): PaisEntity!
   deleteReceta(id: String!): String!
+  createPais(pais: PaisDto!): PaisEntity!
+  deletePais(id: String!): String!
 }
 
 input RecetaDto {
@@ -36,4 +45,8 @@ input RecetaDto {
   foto: String!
   preparacion: String!
   video: String!
+}
+
+input PaisDto {
+  nombre: String!
 }
