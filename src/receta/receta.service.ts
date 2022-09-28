@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { RecetaEntity } from './receta.entity';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Cache } from 'cache-manager';
+import { RecetaDto } from './receta.dto';
 
 @Injectable()
 export class RecetaService {
@@ -36,7 +37,7 @@ export class RecetaService {
         return receta;
     }
 
-    async create(receta: RecetaEntity): Promise<RecetaEntity> {
+    async create(receta: RecetaDto): Promise<RecetaDto> {
         return this.recetaRepository.save(receta);
     }
 

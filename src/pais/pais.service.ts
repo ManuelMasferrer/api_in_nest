@@ -25,7 +25,6 @@ export class PaisService {
             return paises;
         }
         return cached;
-        // return await this.paisRepository.find({ relations: {culturasgastronomicas: true,},});
     }
 
     async findOne(id: string): Promise<PaisDto>{
