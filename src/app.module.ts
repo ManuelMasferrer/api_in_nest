@@ -25,6 +25,7 @@ import { ProductoEntity } from './producto/producto.entity';
 import { CategoriaproductoEntity } from './categoriaproducto/categoriaproducto.entity';
 import { CulturaRestauranteModule } from './cultura-restaurante/cultura-restaurante.module';
 import { CulturaProductoModule } from './cultura-producto/cultura-producto.module';
+import { ProductoCategoriaModule } from './producto-categoria/producto-categoria.module';
 
 @Module({
   imports: [
@@ -48,7 +49,7 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
+      password: '123456',
       database: 'culturagastronomica',
       entities: [RegionEntity,
         CulturaGastronomicaEntity,
@@ -64,6 +65,7 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
     }),
     UsuarioModule,
     AuthModule,
+    ProductoCategoriaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
