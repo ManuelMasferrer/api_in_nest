@@ -21,10 +21,22 @@ type CulturaGastronomicaEntity {
   id: String!
   nombre: String!
   descripcion: String!
+  region: RegionEntity!
   recetas: [RecetaEntity!]!
 }
 
+type RegionEntity {
+  id: String!
+  nombre: String!
+}
+
 type Query {
+  findRegionPorCulturaId(id: String!): RegionEntity!
+  findCulturaPorRegionId(id: String!): CulturaGastronomicaEntity!
+  regiones: [RegionEntity!]!
+  region(id: String!): RegionEntity!
+  culturas: [CulturaGastronomicaEntity!]!
+  cultura(id: String!): CulturaGastronomicaEntity!
   recetas: [RecetaEntity!]!
   receta(id: String!): RecetaEntity!
   paises: [PaisEntity!]!
@@ -32,11 +44,28 @@ type Query {
 }
 
 type Mutation {
+  associateRegionaCulturaId(region: RegionDto!, id: String!): CulturaGastronomicaEntity!
+  deleteRegionIdCulturaId(culturaId: String!, regionId: String!): String!
+  createRegion(region: RegionDto!): RegionEntity!
+  updateRegion(id: String!, region: RegionDto!): RegionEntity!
+  deleteRegion(id: String!): String!
+  createCulturaGastronomica(cultura: CulturagastronomicaDto!): CulturaGastronomicaEntity!
+  updateCulturaGastronomica(id: String!, cultura: CulturagastronomicaDto!): CulturaGastronomicaEntity!
+  deleteCulturaGastronomica(id: String!): String!
   createReceta(receta: RecetaDto!): RecetaEntity!
   updateReceta(id: String!, pais: PaisDto!): PaisEntity!
   deleteReceta(id: String!): String!
   createPais(pais: PaisDto!): PaisEntity!
   deletePais(id: String!): String!
+}
+
+input RegionDto {
+  nombre: String!
+}
+
+input CulturagastronomicaDto {
+  nombre: String!
+  descripcion: String!
 }
 
 input RecetaDto {

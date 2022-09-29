@@ -30,6 +30,7 @@ export class CulturaGastronomicaEntity {
   @Column()
   descripcion: string;
 
+  @Field(type => RegionEntity)
   @OneToOne(() => RegionEntity, (region) => region.culturagastronomica, {
     cascade: true,
   })
