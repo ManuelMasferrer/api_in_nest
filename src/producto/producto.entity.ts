@@ -1,5 +1,4 @@
 import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity'
-/* eslint-disable prettier/prettier */
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 import { Field, ObjectType } from '@nestjs/graphql';
