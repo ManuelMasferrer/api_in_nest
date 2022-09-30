@@ -13,8 +13,9 @@ import {
 } from 'typeorm';
 import { ProductoEntity } from '../producto/producto.entity';
 import { RestauranteEntity } from '../restaurante/restaurante.entity';
+import { Field, ObjectType } from '@nestjs/graphql';
 
-
+@ObjectType()
 @Entity()
 export class CulturaGastronomicaEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -41,6 +42,7 @@ export class CulturaGastronomicaEntity {
   @JoinTable()
   paises: PaisEntity[];
 
+  @Field(type => [ProductoEntity])
   @OneToMany(() => ProductoEntity, (producto) => producto.culturaGastronomica)
   productos: ProductoEntity[];
 
