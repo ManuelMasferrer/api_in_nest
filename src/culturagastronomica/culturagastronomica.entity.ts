@@ -47,6 +47,7 @@ export class CulturaGastronomicaEntity {
   @JoinTable()
   paises: PaisEntity[];
 
+  @Field(type => [ProductoEntity])
   @OneToMany(() => ProductoEntity, (producto) => producto.culturaGastronomica)
   productos: ProductoEntity[];
 
