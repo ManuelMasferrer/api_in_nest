@@ -61,8 +61,7 @@ describe('RestauranteService', () => {
   });
 
   it('create debe crear un nuevo restaurante', async () => {
-    
-    // await culturaData();
+ 
     const fec: string =  new Date("2018-03-16").toISOString()
     const restaurante: RestauranteEntity = {
       id: "",
