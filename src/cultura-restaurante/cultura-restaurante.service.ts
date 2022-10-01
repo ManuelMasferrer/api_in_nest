@@ -67,7 +67,7 @@ export class CulturaRestauranteService {
         }
         
         culturagastronomica.restaurantes = restaurantes;
-        return await this.culturaGastronomicaRepository.save(culturagastronomica);    
+        return this.culturaGastronomicaRepository.save(culturagastronomica);    
     }
 
     async deleteRestauranteToCultura(culturaId: string, restauranteId: string) {
