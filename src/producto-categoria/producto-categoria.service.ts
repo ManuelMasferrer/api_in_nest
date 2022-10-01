@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
 import { InjectRepository } from '@nestjs/typeorm';
-import { CategoriaproductoEntity } from 'src/categoriaproducto/categoriaproducto.entity';
-import { ProductoEntity } from 'src/producto/producto.entity';
+import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity';
+import { ProductoEntity } from '../producto/producto.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 
@@ -20,7 +20,7 @@ export class ProductoCategoriaService {
         if(!producto)
             throw new BusinessLogicException("El producto con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
         
-        const categoriaproducto: CategoriaproductoEntity = await this.categoiaproductoRepository.findOne({where: {id: categoriaId}, relations: ["categoriaproducto", "productos"]});
+        const categoriaproducto: CategoriaproductoEntity = await this.categoiaproductoRepository.findOne({where: {id: categoriaId}, relations: ["productos"]});
         if (!categoriaproducto)
             throw new BusinessLogicException("La categoria con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
             

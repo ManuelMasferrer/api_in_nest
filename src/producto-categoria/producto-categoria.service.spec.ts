@@ -29,7 +29,7 @@ describe('ProductoCategoriaService', () => {
     }).compile();
 
     service = module.get<ProductoCategoriaService>(ProductoCategoriaService);
-    categoriaProductoRepository = module.get<Repository<CategoriaproductoEntity>(getRepositoryToken(CategoriaproductoEntity));
+    categoriaProductoRepository = module.get<Repository<CategoriaproductoEntity>>(getRepositoryToken(CategoriaproductoEntity));
     productoRepository = module.get<Repository<ProductoEntity>>(getRepositoryToken(ProductoEntity));
     await seeDatabase();
     
