@@ -28,21 +28,22 @@ describe('CiudadService', () => {
     const seeDatabase = async () =>{
       repository.clear();
       CiudadesList = [];
-      restaurantesList = []
-      // restaurante.nombre = faker.commerce.productName();
-      
+      //restaurantesList = []
+      //restaurante.nombre = faker.commerce.productName();
+      const restaurante = new RestauranteEntity();
+
       for(let i = 0; i < 5; i++){
 
         const Ciudad: CiudadEntity = await repository.save({
-              nombre: faker.address.cityName(),
-              restaurantes: restaurantesList,
+              nombre: faker.address.cityName()
+              //restaurantes: restaurantesList,
           })
           CiudadesList.push(Ciudad);
           
       }
-      // restaurante.nombre = faker.company.name();
-      // restaurante.michelin = faker.commerce.productDescription();
-      // restaurante.fechaMichelin= faker.date.birthdate().toString();
+      restaurante.nombre = faker.company.name();
+      restaurante.michelin = 2;
+      restaurante.fechaMichelin= faker.date.birthdate().toString();
       
     }
 
