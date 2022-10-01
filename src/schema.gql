@@ -17,12 +17,25 @@ type PaisEntity {
   culturasgastronomicas: [CulturaGastronomicaEntity!]!
 }
 
+type CategoriaproductoEntity {
+  productos: [ProductoEntity!]!
+}
+
+type ProductoEntity {
+  id: String!
+  nombre: String!
+  descripcion: String!
+  culturaGastronomica: CulturaGastronomicaEntity!
+  categoriaProducto: CategoriaproductoEntity!
+}
+
 type CulturaGastronomicaEntity {
   id: String!
   nombre: String!
   descripcion: String!
   region: RegionEntity!
   recetas: [RecetaEntity!]!
+  productos: [ProductoEntity!]!
 }
 
 type RegionEntity {
@@ -41,6 +54,8 @@ type Query {
   receta(id: String!): RecetaEntity!
   paises: [PaisEntity!]!
   pais(id: String!): PaisEntity!
+  productos: [ProductoEntity!]!
+  producto(id: String!): [ProductoEntity!]!
 }
 
 type Mutation {
@@ -57,6 +72,9 @@ type Mutation {
   deleteReceta(id: String!): String!
   createPais(pais: PaisDto!): PaisEntity!
   deletePais(id: String!): String!
+  createProducto(producto: ProductoDto!): ProductoEntity!
+  updateProducto(id: String!, producto: ProductoDto!): ProductoEntity!
+  deleteProducto(id: String!): String!
 }
 
 input RegionDto {
@@ -78,4 +96,9 @@ input RecetaDto {
 
 input PaisDto {
   nombre: String!
+}
+
+input ProductoDto {
+  nombre: String!
+  descripcion: String!
 }
