@@ -7,6 +7,7 @@ import { RestauranteService } from './restaurante.service';
 import { faker } from '@faker-js/faker';
 import { CiudadEntity } from '../ciudad/ciudad.entity';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
+import { CacheModule } from '@nestjs/common';
 
 describe('RestauranteService', () => {
   let service: RestauranteService;
@@ -16,7 +17,7 @@ describe('RestauranteService', () => {
   let culturaGastronomicaData = new CulturaGastronomicaEntity();
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [...TypeOrmTestingConfig()],
+      imports: [...TypeOrmTestingConfig(), CacheModule.register()],
       providers: [RestauranteService],
     }).compile();
 
