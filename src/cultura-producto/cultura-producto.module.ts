@@ -4,12 +4,14 @@ import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastron
 import { ProductoEntity } from '../producto/producto.entity';
 import { CulturaProductoService } from './cultura-producto.service';
 import { CulturaProductoController } from './cultura-producto.controller';
+import { CulturaProductoResolver } from './cultura-producto.resolver';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CulturaGastronomicaEntity, ProductoEntity])],
   controllers: [CulturaProductoController],
   providers: [
-    CulturaProductoService,],
+    CulturaProductoService,
+    CulturaProductoResolver,],
 })
 
 export class CulturaRestauranteModule {}

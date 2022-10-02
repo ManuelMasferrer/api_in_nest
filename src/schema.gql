@@ -74,6 +74,8 @@ type Query {
   producto(id: String!): [ProductoEntity!]!
   restaurantes: [RestauranteEntity!]!
   restaurante(id: String!): RestauranteEntity!
+  findRestaurantesByCulturaId(id: String!): RestauranteEntity!
+  findRestauranteByCulturaIdRestauranteId(culturaId: String!, restauranteId: String!): RestauranteEntity!
 }
 
 type Mutation {
@@ -96,6 +98,8 @@ type Mutation {
   createRestaurante(museum: RestauranteDto!): RestauranteEntity!
   updateRestaurante(id: String!, restaurante: RestauranteDto!): RestauranteEntity!
   deleteRestaurante(id: String!): String!
+  addRestauranteCultura(culturaId: String!, restauranteId: String!): CulturaGastronomicaEntity!
+  deleteRestauranteToCultura(culturaId: String!, restauranteId: String!): String!
 }
 
 input RegionDto {
