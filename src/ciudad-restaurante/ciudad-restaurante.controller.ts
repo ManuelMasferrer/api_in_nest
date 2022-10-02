@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { RestauranteDto } from '../restaurante/restaurante.dto';
 import { RestauranteEntity } from '../restaurante/restaurante.entity';
