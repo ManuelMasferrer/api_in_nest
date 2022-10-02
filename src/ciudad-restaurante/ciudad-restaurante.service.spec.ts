@@ -43,7 +43,7 @@ describe('CiudadRestauranteService', () => {
       restauranteRepository.clear();
       restaurantesList = [];
 
-      const ciudad= new CiudadEntity();
+      ciudad= new CiudadEntity();
       ciudad.nombre = faker.address.cityName();
       
       const fec: string =  new Date("2018-03-16").toISOString()
@@ -61,22 +61,12 @@ describe('CiudadRestauranteService', () => {
       const region = new RegionEntity();
       region.nombre = faker.commerce.productName();
 
-        // culturagastronomica = await culturaRepository.save({
-        //   nombre: faker.company.name(),
-        //   descripcion: faker.commerce.productDescription(),
-        //   region: region,
-        //   recetas: recetasList,
-        //   restaurantes: restaurantesList,
-        //   paises: paisesList,
-        //   productos: productosList
-        // })
-        
-        // ciudad = await ciudadRepository.save({
-        //   nombre: faker.address.cityName(),
-        //   restaurantes: restaurantesList
-        // })
+      ciudad = await ciudadRepository.save({
+          nombre: faker.address.cityName(),
+          restaurantes: restaurantesList
+        })
     }
-    
+     
 
     it('should be defined', () => {
       expect(service).toBeDefined();
@@ -101,8 +91,6 @@ describe('CiudadRestauranteService', () => {
       expect(resultado.restaurantes[0].nombre).toBe(newRestaurante.nombre);
       expect(resultado.restaurantes[0].michelin).toBe(newRestaurante.michelin);
       expect(resultado.restaurantes[0].fechaMichelin).toBe(newRestaurante.fechaMichelin);
-      //expect(resultado.restaurantes[0].ciudad).toBe(newRestaurante.ciudad);
-      //expect(resultado.restaurantes[0].culturagastronomica).toBe(newRestaurante.culturagastronomica);
     });
     
 
@@ -115,74 +103,66 @@ describe('CiudadRestauranteService', () => {
       await expect(() => service.addCiudadRestaurante("0", newCiudad.id)).rejects.toHaveProperty("message", "El Restaurante con el id proporcionado no ha sido encontrado");
     });
 
-    // it('addCiudadRestaurante debe producir una excepcion para un restaurante invalido', async () => {
-    //   const fec: string =  new Date("2018-03-16").toISOString()
-    //   const newRestaurante: RestauranteEntity = await restauranteRepository.save({
-    //     nombre: faker.company.name(),
-    //     michelin: 3,
-    //     fechaMichelin: fec
-    //   })
+    it('addCiudadRestaurante debe producir una excepcion para un restaurante invalido', async () => {
+      const fec: string =  new Date("2018-03-16").toISOString()
+      const newRestaurante: RestauranteEntity = await restauranteRepository.save({
+        nombre: faker.company.name(),
+        michelin: 3,
+        fechaMichelin: fec
+      })
     
-    //   await expect(() => service.addCiudadRestaurante(newRestaurante.id,"0")).rejects.toHaveProperty("message", "La Ciudad con el id proporcionado no ha sido encontrado");
-    // });
+      await expect(() => service.addCiudadRestaurante(newRestaurante.id,"0")).rejects.toHaveProperty("message", "La Ciudad con el id proporcionado no ha sido encontrado");
+    });
 
-    // // findRestaranteByCiudadIdRestauranteId(restauranteId: string, ciudadId: string)
-    // it('findRestaranteByCiudadIdRestauranteId debe retornar un restaurante de una ciudad', async () => {
-    //   const restaurante: RestauranteEntity = restaurantesList[0];
-    //   const storedRestaurante: RestauranteEntity = await service.findRestaranteByCiudadIdRestauranteId(ciudad.id, restaurante.id, )
-    //   expect(storedRestaurante).not.toBeNull();
-    //   expect(storedRestaurante.nombre).toBe(restaurante.nombre);
-    //   expect(storedRestaurante.michelin).toBe(restaurante.michelin);
-    //   expect(storedRestaurante.fechaMichelin).toBe(restaurante.fechaMichelin);
-    // });
+    
+    it('findRestaranteByCiudadIdRestauranteId debe retornar el restaurante de una ciudad', async () => {
+    
+      const storedRestaurante: RestauranteEntity = await service.findRestaranteByCiudadIdRestauranteId(restaurantesList[0].id, ciudad.id)
+      
+      expect(storedRestaurante).not.toBeNull();
+      expect(storedRestaurante.nombre).toBe(restaurantesList[0].nombre);
+      expect(storedRestaurante.michelin).toBe(restaurantesList[0].michelin);
+      expect(storedRestaurante.fechaMichelin).toBe(restaurantesList[0].fechaMichelin);
+    });
   
 
-    // // findRestarantesByCiudadId(ciudadId: string): Promise<RestauranteEntity[]
-    // it('findRestarantesByCiudadId debe arrojar una excepcion para una ciudad invalida', async () => {
-    //   const restaurante: RestauranteEntity = restaurantesList[0];
-    //   await expect(()=> service.findRestarantesByCiudadId("0")).rejects.toHaveProperty("message", "La Ciudad con el id proporcionado no ha sido encontrada"); 
-    // });
     
-    // it('findRestarantesByCiudadId debe arrojar una excepcion para un restaurante invalido', async () => {
-    //   await expect(()=> service.findRestarantesByCiudadId("0")).rejects.toHaveProperty("message", "El restaurante con el id proporcionado no ha sido encontrado"); 
-    // });
+    it('findRestarantesByCiudadId debe arrojar una excepcion para una ciudad invalida', async () => {
+      // const restaurante: RestauranteEntity = restaurantesList[0];
+      await expect(()=> service.findRestarantesByCiudadId("0")).rejects.toHaveProperty("message", "La Ciudad con el id proporcionado no ha sido encontrada"); 
+    });
     
-    // // associateRestauranteCiudad(ciudadId: string, restaurantes: RestauranteEntity[]
-    // it('associateRestauranteCiudad debe actualizar la lista de restaurante de una ciudad', async () => {
-    //   // const newRestaurante:RestauranteEntity = await restauranteRepository.save({
-    //   //   nombre: faker.company.name(),
-    //   //   michelin: faker.random.numeric(3),
-    //   //   fechaMichelin: faker.date.birthdate()  
-    //   // })
-    //   const fec: string =  new Date("2018-03-16").toISOString()
-    //   const newRestaurante: RestauranteEntity = await restauranteRepository.save({
-    //     nombre: faker.company.name(),
-    //     michelin: 2,
-    //     fechaMichelin: fec 
-    //   })
+ 
+    it('associateRestauranteCiudad debe actualizar la lista de restaurante de una ciudad', async () => {
+
+      const fec: string =  new Date("2018-03-16").toISOString()
+      const newRestaurante: RestauranteEntity = await restauranteRepository.save({
+        nombre: faker.company.name(),
+        michelin: 2,
+        fechaMichelin: fec 
+      })
      
 
-    //   const updatedCiudad: CiudadEntity = await service.associateRestauranteCiudad(ciudad.id, [newRestaurante]);
-    //   expect(updatedCiudad.restaurantes.length).toBe(1);
-    //   expect(updatedCiudad.restaurantes[0]).not.toBeNull();
-    //   expect(updatedCiudad.restaurantes[0].nombre).toBe(newRestaurante.nombre);
-    //   expect(updatedCiudad.restaurantes[0].michelin).toBe(newRestaurante.michelin);
-    //   expect(updatedCiudad.restaurantes[0].fechaMichelin).toBe(newRestaurante.fechaMichelin);
+      const updatedCiudad: CiudadEntity = await service.associateRestauranteCiudad(ciudad.id, [newRestaurante]);
+      expect(updatedCiudad.restaurantes.length).toBe(1);
+      expect(updatedCiudad.restaurantes[0]).not.toBeNull();
+      expect(updatedCiudad.restaurantes[0].nombre).toBe(newRestaurante.nombre);
+      expect(updatedCiudad.restaurantes[0].michelin).toBe(newRestaurante.michelin);
+      expect(updatedCiudad.restaurantes[0].fechaMichelin).toBe(newRestaurante.fechaMichelin);
 
-    // });
+    });
     
          
-    // // deleteRestauranteToCiudad(ciudadId: string, restauranteId: string)
-    // it('deleteRestauranteToCiudad debe eliminar un restaurante de una ciudad', async () => {
-    //   const restaurante: RestauranteEntity = productosList[0];
+    it('deleteRestauranteToCiudad debe eliminar un restaurante de una ciudad', async () => {
+      const restaurante: RestauranteEntity = restaurantesList[0];
       
-    //   await service.deleteRestauranteToCiudad(ciudad.id, restaurante.id);
+      await service.deleteRestauranteToCiudad(ciudad.id, restaurante.id);
   
-    //   const storedCiudad: CiudadEntity = await ciudadRepository.findOne({where: {id: ciudad.id}, relations: ["restaurantes"]});
-    //   const deletedRestaurante: RestauranteEntity = storedCiudad.restaurantes.find(a => a.id === restaurante.id);
+      const storedCiudad: CiudadEntity = await ciudadRepository.findOne({where: {id: ciudad.id}, relations: ["restaurantes"]});
+      const deletedRestaurante: RestauranteEntity = storedCiudad.restaurantes.find(a => a.id === restaurante.id);
   
-    //   expect(deletedRestaurante).toBeUndefined();
+      expect(deletedRestaurante).toBeUndefined();
       
-    // });
+    });
     
 });

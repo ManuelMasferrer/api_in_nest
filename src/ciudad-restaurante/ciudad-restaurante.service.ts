@@ -27,19 +27,18 @@ export class CiudadRestauranteService {
         return await this.ciudadRepository.save(ciudad);
     }
   
-      async findRestaranteByCiudadIdRestauranteId(restauranteId: string, ciudadId: string): Promise<RestauranteEntity> {
-        const ciudad: CiudadEntity = await this.ciudadRepository.findOne({where: {id: ciudadId}});
+    async findRestaranteByCiudadIdRestauranteId(restauranteId: string, ciudadId: string): Promise<RestauranteEntity> {
+        const ciudad: CiudadEntity = await this.ciudadRepository.findOne({where: {id: ciudadId},relations: ["restaurantes"]});
         if (!ciudad)
-          throw new BusinessLogicException("La Ciudad con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
+          throw new BusinessLogicException("La Ciudad con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
       
         const restaurante: RestauranteEntity = await this.restauranteRepository.findOne({where: {id: restauranteId}, relations: ["ciudad"]})
         if (!restaurante)
           throw new BusinessLogicException("El Restaurante con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
           
-        const ciudadRestaurante: RestauranteEntity = ciudad.restaurantes.find(e => e.id === ciudad.id)
-
+        const ciudadRestaurante: RestauranteEntity = ciudad.restaurantes.find(e => e.id === restauranteId)
         if(!ciudadRestaurante)
-            throw new BusinessLogicException("La Ciudad con el id proporcionado no esta asociado restaurante", BusinessError.PRECONDITION_FAILED)
+            throw new BusinessLogicException("le Restaurante con el id proporcionado no esta asociado la cuidad", BusinessError.PRECONDITION_FAILED)
         
         return ciudadRestaurante;    
    
