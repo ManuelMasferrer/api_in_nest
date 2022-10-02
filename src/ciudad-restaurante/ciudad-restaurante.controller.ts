@@ -1,9 +1,8 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { RestauranteDto } from '../restaurante/restaurante.dto';
 import { RestauranteEntity } from '../restaurante/restaurante.entity';
 import { CiudadEntity } from 'src/ciudad/ciudad.entity';
-import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { CiudadRestauranteService } from './ciudad-restaurante.service';
 
 @Controller('ciudad-restaurante')
