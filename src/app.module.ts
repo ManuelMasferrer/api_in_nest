@@ -49,7 +49,7 @@ import { CiudadRestauranteModule } from './ciudad-restaurante/ciudad-restaurante
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '123456',
+      password: 'postgres',
       database: 'culturagastronomica',
       entities: [RegionEntity,
         CulturaGastronomicaEntity,
