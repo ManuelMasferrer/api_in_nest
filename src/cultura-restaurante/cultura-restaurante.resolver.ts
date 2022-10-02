@@ -1,6 +1,4 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { plainToInstance } from 'class-transformer';
-import { RestauranteDto } from '../restaurante/restaurante.dto';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 import { RestauranteEntity } from '../restaurante/restaurante.entity';
 import { CulturaRestauranteService } from './cultura-restaurante.service';

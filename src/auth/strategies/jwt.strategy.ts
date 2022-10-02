@@ -1,7 +1,7 @@
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
-import constantes from 'src/shared/security/jwtConstants';
+import jwtConstants from 'src/shared/security/jwtConstants';
 
 
 @Injectable()
@@ -10,7 +10,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
             ignoreExpiration: false,
-            secretOrKey: constantes.JWT_SECRET,
+            secretOrKey: jwtConstants.JWT_SECRET,
         });
     }
    

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Injectable } from '@nestjs/common';
+import { Param, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CiudadEntity } from '../ciudad/ciudad.entity';
 import { RestauranteEntity } from '../restaurante/restaurante.entity';
@@ -54,13 +54,14 @@ export class CiudadRestauranteService {
     async associateRestauranteCiudad(ciudadId: string, restaurantes: RestauranteEntity[]): Promise<CiudadEntity> {
         const ciudad: CiudadEntity = await this.ciudadRepository.findOne({where: {id: ciudadId}, relations: ["restaurantes"]});
         
-        if (!ciudad)
-        throw new BusinessLogicException("La Ciudad con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
-        
+        if (!ciudad) {
+            throw new BusinessLogicException("La Ciudad con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
+        }
         for (const element of restaurantes) {
             const restaurante: RestauranteEntity = await this.restauranteRepository.findOne({where: {id: element.id}})
-            if (!restaurante)
-            throw new BusinessLogicException("El Restaurante con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
+            if (!restaurante) {
+                throw new BusinessLogicException("El Restaurante con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
+            }
         }
         
         ciudad.restaurantes = restaurantes;

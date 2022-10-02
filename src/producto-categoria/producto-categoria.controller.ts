@@ -1,7 +1,6 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors.interceptor';
-import { CategoriaproductoDto } from '../categoriaproducto/categoriaproducto.dto';
 import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity';
 import { ProductoCategoriaService } from './producto-categoria.service';
 import { ProductoEntity } from '../producto/producto.entity';
