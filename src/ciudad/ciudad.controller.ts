@@ -2,15 +2,11 @@
 
 import { Controller, Get, Param, UseGuards, UseInterceptors } from '@nestjs/common';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
-import { CiudadDto } from './ciudad.dto';
-import { CiudadEntity } from './ciudad.entity';
 import { CiudadService } from './ciudad.service';
-import { plainToInstance } from 'class-transformer';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { HasRoles } from 'src/usuario/roles.decorator';
 import { Role } from 'src/usuario/role.enum';
-
 
 @Controller('ciudad')
 @UseInterceptors(BusinessErrorsInterceptor)
