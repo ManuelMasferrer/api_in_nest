@@ -51,6 +51,7 @@ type CulturaGastronomicaEntity {
   region: RegionEntity!
   recetas: [RecetaEntity!]!
   productos: [ProductoEntity!]!
+  productos: [ProductoEntity!]!
 }
 
 type RegionEntity {
