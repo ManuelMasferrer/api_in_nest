@@ -89,9 +89,4 @@ export class CulturaProductoService {
         await this.culturaGastronomicaRepository.save(culturagastronomica)    
     }
 
-    
-
-
-
-
 }
