@@ -24,7 +24,6 @@ export class CulturaRestauranteResolver {
         return this.culturaRestauranteService.addRestauranteCultura(culturaId,restauranteId);
     }
 
-
     @Mutation(() => String)
     deleteRestauranteToCultura(@Args('culturaId') culturaId: string, @Args('restauranteId') restauranteId:string){
         return this.culturaRestauranteService.deleteRestauranteToCultura(culturaId, restauranteId);
