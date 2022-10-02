@@ -25,7 +25,9 @@ import { ProductoEntity } from './producto/producto.entity';
 import { CategoriaproductoEntity } from './categoriaproducto/categoriaproducto.entity';
 import { CulturaRestauranteModule } from './cultura-restaurante/cultura-restaurante.module';
 import { CulturaProductoModule } from './cultura-producto/cultura-producto.module';
-import { ProductoCategoriaModule } from './producto-categoria/producto-categoria.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
+import { ApolloDriver } from '@nestjs/apollo';
 
 @Module({
   imports: [
@@ -44,6 +46,10 @@ import { ProductoCategoriaModule } from './producto-categoria/producto-categoria
     RestauranteModule,
     CulturaRestauranteModule,
     CulturaProductoModule,
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      driver: ApolloDriver
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -65,9 +71,13 @@ import { ProductoCategoriaModule } from './producto-categoria/producto-categoria
     }),
     UsuarioModule,
     AuthModule,
-    ProductoCategoriaModule,
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      driver: ApolloDriver
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
+
 })
 export class AppModule { }

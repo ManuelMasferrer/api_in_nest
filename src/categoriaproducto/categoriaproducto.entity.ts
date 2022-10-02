@@ -1,12 +1,13 @@
 import { ProductoEntity } from '../producto/producto.entity';
 import {
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
+    Column,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn,
   } from 'typeorm';
+import { Field, ObjectType } from '@nestjs/graphql';
 
-
+@ObjectType()
 @Entity()
 export class CategoriaproductoEntity {
 
@@ -16,7 +17,8 @@ export class CategoriaproductoEntity {
     @Column()
     nombre: string;
    
-    @OneToMany(() => ProductoEntity, (producto) => producto.categoriaProducto )
+    @Field(type => [ProductoEntity])
+    @OneToMany(() => ProductoEntity, producto => producto.categoriaProducto )
     productos: ProductoEntity[];
 
 }
