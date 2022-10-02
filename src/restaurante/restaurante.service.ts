@@ -1,20 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
 import { RestauranteEntity } from './restaurante.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
-
+import { Cache } from 'cache-manager';
 @Injectable()
 export class RestauranteService {
+    cacheKey: string = "restaurantes";
+
     constructor(
         @InjectRepository(RestauranteEntity)
-       private readonly restauranteRepository: Repository<RestauranteEntity>
+       private readonly restauranteRepository: Repository<RestauranteEntity>,
+
+       @Inject(CACHE_MANAGER)
+       private readonly cacheManager: Cache
     ){}
     /*
     TRAER TODOS LOS RESTAURANTES
     */
     async findAll(): Promise<RestauranteEntity[]> {
-        return this.restauranteRepository.find();
+        const cached: RestauranteEntity[] = await this.cacheManager.get<RestauranteEntity[]>(this.cacheKey);
+        if(!cached){
+            const restaurantes: RestauranteEntity[] = await this.restauranteRepository.find();
+            await this.cacheManager.set(this.cacheKey, restaurantes);
+            return restaurantes;
+        
+        }
+        return cached;
     }
 
      /*
