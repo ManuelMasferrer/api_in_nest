@@ -1,22 +1,33 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, CACHE_MANAGER, Inject } from '@nestjs/common';
 import { ProductoEntity } from './producto.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity';
-
+import { Cache } from 'cache-manager';
 @Injectable()
 export class ProductoService {
+
+    cacheKey: string = "Productos";
     constructor(
         @InjectRepository(ProductoEntity)
-       private readonly productoRepository: Repository<ProductoEntity>
+       private readonly productoRepository: Repository<ProductoEntity>,
+       @Inject(CACHE_MANAGER)
+       private readonly cacheManager: Cache
+       
     ){}
     /*
     TRAER TODOS LOS PRODUCTOS
     */
     async findAll(): Promise<ProductoEntity[]> {
-        return await this.productoRepository.find();
+        const cached: ProductoEntity[] = await this.cacheManager.get<ProductoEntity[]>(this.cacheKey);
+        if(!cached){
+          const productos: ProductoEntity[] = await this.productoRepository.find();
+          return productos;
+        }
+
+        return cached;
     }
     /*
     TRAER UN PRODUCTO POR ID
