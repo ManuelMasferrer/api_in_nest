@@ -36,7 +36,7 @@ describe('CategoriaproductoService', () => {
     for(let i = 0; i < 5; i++){
 
       const Categoriaproducto: CategoriaproductoEntity = await repository.save({
-            nombre: faker.address.country()            
+            nombre: faker.commerce.product()            
         })
         CategoriaproductoList.push(Categoriaproducto);
         
