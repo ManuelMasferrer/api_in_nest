@@ -51,3 +51,4 @@ export class ProductoCategoriaController {
     async deleteProductoToCategoria(@Param('categoriaId') categoriaId: string, @Param('productoId') productoId: string): Promise<void>{
         return await this.productoCategoriaService.deleteProductoToCategoria(categoriaId, productoId)
     }
+}
