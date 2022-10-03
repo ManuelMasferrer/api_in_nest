@@ -16,8 +16,7 @@ describe('RecetaService', () => {
   let recetasList: RecetaEntity[];
   let regionData = new RegionEntity();
   let culturaGastronomicaData = new CulturaGastronomicaEntity();
-  let cacheManager: Cache;
-
+ 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [...TypeOrmTestingConfig(), CacheModule.register()],
