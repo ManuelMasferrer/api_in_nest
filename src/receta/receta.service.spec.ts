@@ -72,7 +72,7 @@ describe('RecetaService', () => {
     await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "La receta con el id proporcionado no ha sido encontrada")
   });
 
-  it('create debe crear un nuevo museo', async () => {
+  it('create debe crear una nueva receta', async () => {
 
     const receta: RecetaEntity = {
       id: "",

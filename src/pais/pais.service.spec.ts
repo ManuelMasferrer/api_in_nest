@@ -71,6 +71,21 @@ describe('PaisService', () => {
         await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado")
     });
 
+    it('create debe crear un nuevo pais', async () => {
+
+        const pais: PaisEntity = {
+          id: "",
+          nombre: faker.lorem.words() 
+        }
+    
+        const newPais: PaisEntity = await service.create(pais);
+        expect(newPais).not.toBeNull();
+    
+        const storedPais: PaisEntity = await repository.findOne({where: {id: newPais.id}})
+        expect(storedPais).not.toBeNull();
+        expect(storedPais.nombre).toEqual(newPais.nombre)
+      });    
+
     it('Actualizar o modificar un pais', async ()=> {
         const pais: PaisEntity = paisesList[0];
         pais.nombre = "Nuevo nombre";
