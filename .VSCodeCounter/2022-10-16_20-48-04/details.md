@@ -1,0 +1,159 @@
+# Details
+
+Date : 2022-10-16 20:48:04
+
+Directory /Users/msm/MISO/apis/MISW4403_202214_Equipo28
+
+Total : 144 files,  86927 codes, 82 comments, 1852 blanks, all 88861 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [.eslintrc.js](/.eslintrc.js) | JavaScript | 2 | 23 | 1 | 26 |
+| [Jenkinsfile](/Jenkinsfile) | Groovy | 74 | 4 | 1 | 79 |
+| [README.md](/README.md) | Markdown | 4 | 0 | 2 | 6 |
+| [collections/Auth_collection.json](/collections/Auth_collection.json) | JSON | 103 | 0 | 0 | 103 |
+| [collections/Categoria-Producto_collection.json](/collections/Categoria-Producto_collection.json) | JSON | 441 | 0 | 0 | 441 |
+| [collections/Ciudades_collection.json](/collections/Ciudades_collection.json) | JSON | 141 | 0 | 0 | 141 |
+| [collections/Cultura-Region_collection.json](/collections/Cultura-Region_collection.json) | JSON | 484 | 0 | 0 | 484 |
+| [collections/CulturaGastronomica_collection.json](/collections/CulturaGastronomica_collection.json) | JSON | 588 | 0 | 0 | 588 |
+| [collections/Cultura_Recetas_collection.json](/collections/Cultura_Recetas_collection.json) | JSON | 1,585 | 0 | 0 | 1,585 |
+| [collections/Pais-Cultura-collection.json](/collections/Pais-Cultura-collection.json) | JSON | 1,541 | 0 | 0 | 1,541 |
+| [collections/Paises_collection.json](/collections/Paises_collection.json) | JSON | 618 | 0 | 0 | 618 |
+| [collections/Producto.postman_collection.json](/collections/Producto.postman_collection.json) | JSON | 566 | 0 | 0 | 566 |
+| [collections/Recetas_collection.json](/collections/Recetas_collection.json) | JSON | 611 | 0 | 0 | 611 |
+| [collections/Region_collection.json](/collections/Region_collection.json) | JSON | 482 | 0 | 0 | 482 |
+| [collections/Restaurantes.postman_collection.json](/collections/Restaurantes.postman_collection.json) | JSON | 467 | 0 | 0 | 467 |
+| [collections/Usuarios_collection.json](/collections/Usuarios_collection.json) | JSON | 27 | 0 | 0 | 27 |
+| [collections/code.ts](/collections/code.ts) | TypeScript | 0 | 0 | 1 | 1 |
+| [jmeter/HTTP Request-Cultura-Region.jmx](/jmeter/HTTP%20Request-Cultura-Region.jmx) | XML | 164 | 0 | 1 | 165 |
+| [jmeter/Request pais recetas-jmeter.jmx](/jmeter/Request%20pais%20recetas-jmeter.jmx) | XML | 216 | 0 | 1 | 217 |
+| [nest-cli.json](/nest-cli.json) | JSON | 5 | 0 | 1 | 6 |
+| [package-lock.json](/package-lock.json) | JSON | 18,205 | 0 | 1 | 18,206 |
+| [package.json](/package.json) | JSON | 87 | 6 | 0 | 93 |
+| [reports/index.html](/reports/index.html) | HTML | 3,682 | 0 | 749 | 4,431 |
+| [scripts/cultura_gastronomica_entity.sql](/scripts/cultura_gastronomica_entity.sql) | SQL | 1,000 | 0 | 1 | 1,001 |
+| [scripts/pais-entity.sql](/scripts/pais-entity.sql) | SQL | 196 | 0 | 1 | 197 |
+| [scripts/receta-entity.sql](/scripts/receta-entity.sql) | SQL | 50,000 | 0 | 1 | 50,001 |
+| [scripts/region_entity.sql](/scripts/region_entity.sql) | SQL | 1,000 | 0 | 1 | 1,001 |
+| [sonar-project.properties](/sonar-project.properties) | Properties | 9 | 0 | 1 | 10 |
+| [src/app.controller.spec.ts](/src/app.controller.spec.ts) | TypeScript | 18 | 0 | 5 | 23 |
+| [src/app.controller.ts](/src/app.controller.ts) | TypeScript | 10 | 0 | 3 | 13 |
+| [src/app.module.ts](/src/app.module.ts) | TypeScript | 81 | 0 | 2 | 83 |
+| [src/app.service.ts](/src/app.service.ts) | TypeScript | 7 | 0 | 2 | 9 |
+| [src/auth/auth.module.ts](/src/auth/auth.module.ts) | TypeScript | 22 | 0 | 4 | 26 |
+| [src/auth/auth.service.spec.ts](/src/auth/auth.service.spec.ts) | TypeScript | 16 | 0 | 6 | 22 |
+| [src/auth/auth.service.ts](/src/auth/auth.service.ts) | TypeScript | 28 | 0 | 5 | 33 |
+| [src/auth/guards/jwt-auth.guard.ts](/src/auth/guards/jwt-auth.guard.ts) | TypeScript | 4 | 0 | 4 | 8 |
+| [src/auth/guards/local-auth.guard.ts](/src/auth/guards/local-auth.guard.ts) | TypeScript | 4 | 0 | 3 | 7 |
+| [src/auth/guards/roles.guard.ts](/src/auth/guards/roles.guard.ts) | TypeScript | 19 | 0 | 4 | 23 |
+| [src/auth/strategies/jwt-strategy.ts](/src/auth/strategies/jwt-strategy.ts) | TypeScript | 17 | 0 | 3 | 20 |
+| [src/auth/strategies/jwt.strategy.ts](/src/auth/strategies/jwt.strategy.ts) | TypeScript | 17 | 0 | 3 | 20 |
+| [src/auth/strategies/local-strategy.ts](/src/auth/strategies/local-strategy.ts) | TypeScript | 17 | 0 | 3 | 20 |
+| [src/auth/strategies/local.strategy.ts](/src/auth/strategies/local.strategy.ts) | TypeScript | 17 | 0 | 2 | 19 |
+| [src/categoriaproducto/categoriaproducto.controller.ts](/src/categoriaproducto/categoriaproducto.controller.ts) | TypeScript | 48 | 0 | 12 | 60 |
+| [src/categoriaproducto/categoriaproducto.dto.ts](/src/categoriaproducto/categoriaproducto.dto.ts) | TypeScript | 9 | 0 | 7 | 16 |
+| [src/categoriaproducto/categoriaproducto.entity.ts](/src/categoriaproducto/categoriaproducto.entity.ts) | TypeScript | 19 | 0 | 5 | 24 |
+| [src/categoriaproducto/categoriaproducto.module.ts](/src/categoriaproducto/categoriaproducto.module.ts) | TypeScript | 11 | 0 | 1 | 12 |
+| [src/categoriaproducto/categoriaproducto.service.spec.ts](/src/categoriaproducto/categoriaproducto.service.spec.ts) | TypeScript | 46 | 0 | 19 | 65 |
+| [src/categoriaproducto/categoriaproducto.service.ts](/src/categoriaproducto/categoriaproducto.service.ts) | TypeScript | 36 | 0 | 12 | 48 |
+| [src/ciudad-restaurante/ciudad-restaurante.controller.ts](/src/ciudad-restaurante/ciudad-restaurante.controller.ts) | TypeScript | 48 | 0 | 8 | 56 |
+| [src/ciudad-restaurante/ciudad-restaurante.module.ts](/src/ciudad-restaurante/ciudad-restaurante.module.ts) | TypeScript | 12 | 0 | 2 | 14 |
+| [src/ciudad-restaurante/ciudad-restaurante.service.spec.ts](/src/ciudad-restaurante/ciudad-restaurante.service.spec.ts) | TypeScript | 123 | 1 | 45 | 169 |
+| [src/ciudad-restaurante/ciudad-restaurante.service.ts](/src/ciudad-restaurante/ciudad-restaurante.service.ts) | TypeScript | 70 | 0 | 20 | 90 |
+| [src/ciudad/ciudad.controller.ts](/src/ciudad/ciudad.controller.ts) | TypeScript | 24 | 0 | 9 | 33 |
+| [src/ciudad/ciudad.dto.ts](/src/ciudad/ciudad.dto.ts) | TypeScript | 9 | 0 | 4 | 13 |
+| [src/ciudad/ciudad.entity.ts](/src/ciudad/ciudad.entity.ts) | TypeScript | 16 | 0 | 5 | 21 |
+| [src/ciudad/ciudad.module.ts](/src/ciudad/ciudad.module.ts) | TypeScript | 11 | 0 | 2 | 13 |
+| [src/ciudad/ciudad.service.spec.ts](/src/ciudad/ciudad.service.spec.ts) | TypeScript | 54 | 3 | 16 | 73 |
+| [src/ciudad/ciudad.service.ts](/src/ciudad/ciudad.service.ts) | TypeScript | 21 | 0 | 10 | 31 |
+| [src/cultura-producto/cultura-producto.controller.ts](/src/cultura-producto/cultura-producto.controller.ts) | TypeScript | 48 | 0 | 3 | 51 |
+| [src/cultura-producto/cultura-producto.module.ts](/src/cultura-producto/cultura-producto.module.ts) | TypeScript | 16 | 0 | 3 | 19 |
+| [src/cultura-producto/cultura-producto.resolver.ts](/src/cultura-producto/cultura-producto.resolver.ts) | TypeScript | 24 | 0 | 10 | 34 |
+| [src/cultura-producto/cultura-producto.service.spec.ts](/src/cultura-producto/cultura-producto.service.spec.ts) | TypeScript | 163 | 0 | 47 | 210 |
+| [src/cultura-producto/cultura-producto.service.ts](/src/cultura-producto/cultura-producto.service.ts) | TypeScript | 68 | 0 | 25 | 93 |
+| [src/cultura-receta/cultura-receta.controller.ts](/src/cultura-receta/cultura-receta.controller.ts) | TypeScript | 53 | 0 | 11 | 64 |
+| [src/cultura-receta/cultura-receta.module.ts](/src/cultura-receta/cultura-receta.module.ts) | TypeScript | 12 | 0 | 2 | 14 |
+| [src/cultura-receta/cultura-receta.service.spec.ts](/src/cultura-receta/cultura-receta.service.spec.ts) | TypeScript | 180 | 0 | 43 | 223 |
+| [src/cultura-receta/cultura-receta.service.ts](/src/cultura-receta/cultura-receta.service.ts) | TypeScript | 75 | 0 | 26 | 101 |
+| [src/cultura-region/cultura-region.controller.ts](/src/cultura-region/cultura-region.controller.ts) | TypeScript | 47 | 0 | 3 | 50 |
+| [src/cultura-region/cultura-region.module.ts](/src/cultura-region/cultura-region.module.ts) | TypeScript | 15 | 0 | 2 | 17 |
+| [src/cultura-region/cultura-region.resolver.ts](/src/cultura-region/cultura-region.resolver.ts) | TypeScript | 28 | 0 | 6 | 34 |
+| [src/cultura-region/cultura-region.service.spec.ts](/src/cultura-region/cultura-region.service.spec.ts) | TypeScript | 104 | 0 | 14 | 118 |
+| [src/cultura-region/cultura-region.service.ts](/src/cultura-region/cultura-region.service.ts) | TypeScript | 58 | 0 | 11 | 69 |
+| [src/cultura-restaurante/cultura-restaurante.controller.ts](/src/cultura-restaurante/cultura-restaurante.controller.ts) | TypeScript | 48 | 0 | 2 | 50 |
+| [src/cultura-restaurante/cultura-restaurante.module.ts](/src/cultura-restaurante/cultura-restaurante.module.ts) | TypeScript | 15 | 0 | 3 | 18 |
+| [src/cultura-restaurante/cultura-restaurante.resolver.ts](/src/cultura-restaurante/cultura-restaurante.resolver.ts) | TypeScript | 24 | 0 | 7 | 31 |
+| [src/cultura-restaurante/cultura-restaurante.service.spec.ts](/src/cultura-restaurante/cultura-restaurante.service.spec.ts) | TypeScript | 178 | 0 | 48 | 226 |
+| [src/cultura-restaurante/cultura-restaurante.service.ts](/src/cultura-restaurante/cultura-restaurante.service.ts) | TypeScript | 68 | 0 | 23 | 91 |
+| [src/culturagastronomica/culturagastronomica.controller.ts](/src/culturagastronomica/culturagastronomica.controller.ts) | TypeScript | 48 | 0 | 3 | 51 |
+| [src/culturagastronomica/culturagastronomica.dto.ts](/src/culturagastronomica/culturagastronomica.dto.ts) | TypeScript | 17 | 0 | 3 | 20 |
+| [src/culturagastronomica/culturagastronomica.entity.ts](/src/culturagastronomica/culturagastronomica.entity.ts) | TypeScript | 45 | 0 | 10 | 55 |
+| [src/culturagastronomica/culturagastronomica.module.ts](/src/culturagastronomica/culturagastronomica.module.ts) | TypeScript | 14 | 0 | 2 | 16 |
+| [src/culturagastronomica/culturagastronomica.resolver.ts](/src/culturagastronomica/culturagastronomica.resolver.ts) | TypeScript | 32 | 0 | 8 | 40 |
+| [src/culturagastronomica/culturagastronomica.service.spec.ts](/src/culturagastronomica/culturagastronomica.service.spec.ts) | TypeScript | 101 | 0 | 21 | 122 |
+| [src/culturagastronomica/culturagastronomica.service.ts](/src/culturagastronomica/culturagastronomica.service.ts) | TypeScript | 46 | 0 | 11 | 57 |
+| [src/main.ts](/src/main.ts) | TypeScript | 14 | 0 | 2 | 16 |
+| [src/pais-cultura/pais-cultura.controller.ts](/src/pais-cultura/pais-cultura.controller.ts) | TypeScript | 47 | 0 | 10 | 57 |
+| [src/pais-cultura/pais-cultura.module.ts](/src/pais-cultura/pais-cultura.module.ts) | TypeScript | 12 | 0 | 2 | 14 |
+| [src/pais-cultura/pais-cultura.service.spec.ts](/src/pais-cultura/pais-cultura.service.spec.ts) | TypeScript | 146 | 0 | 48 | 194 |
+| [src/pais-cultura/pais-cultura.service.ts](/src/pais-cultura/pais-cultura.service.ts) | TypeScript | 77 | 0 | 33 | 110 |
+| [src/pais/pais.controller.ts](/src/pais/pais.controller.ts) | TypeScript | 48 | 0 | 8 | 56 |
+| [src/pais/pais.dto.ts](/src/pais/pais.dto.ts) | TypeScript | 10 | 0 | 4 | 14 |
+| [src/pais/pais.entity.ts](/src/pais/pais.entity.ts) | TypeScript | 16 | 0 | 5 | 21 |
+| [src/pais/pais.module.ts](/src/pais/pais.module.ts) | TypeScript | 12 | 0 | 2 | 14 |
+| [src/pais/pais.resolver.ts](/src/pais/pais.resolver.ts) | TypeScript | 32 | 0 | 8 | 40 |
+| [src/pais/pais.service.spec.ts](/src/pais/pais.service.spec.ts) | TypeScript | 99 | 0 | 23 | 122 |
+| [src/pais/pais.service.ts](/src/pais/pais.service.ts) | TypeScript | 47 | 0 | 9 | 56 |
+| [src/producto-categoria/producto-categoria.controller.ts](/src/producto-categoria/producto-categoria.controller.ts) | TypeScript | 48 | 0 | 6 | 54 |
+| [src/producto-categoria/producto-categoria.module.ts](/src/producto-categoria/producto-categoria.module.ts) | TypeScript | 12 | 0 | 4 | 16 |
+| [src/producto-categoria/producto-categoria.service.spec.ts](/src/producto-categoria/producto-categoria.service.spec.ts) | TypeScript | 145 | 2 | 53 | 200 |
+| [src/producto-categoria/producto-categoria.service.ts](/src/producto-categoria/producto-categoria.service.ts) | TypeScript | 68 | 0 | 20 | 88 |
+| [src/producto/producto.controller.ts](/src/producto/producto.controller.ts) | TypeScript | 49 | 0 | 4 | 53 |
+| [src/producto/producto.dto.ts](/src/producto/producto.dto.ts) | TypeScript | 18 | 0 | 7 | 25 |
+| [src/producto/producto.entity.ts](/src/producto/producto.entity.ts) | TypeScript | 23 | 0 | 8 | 31 |
+| [src/producto/producto.module.ts](/src/producto/producto.module.ts) | TypeScript | 12 | 0 | 1 | 13 |
+| [src/producto/producto.resolver.ts](/src/producto/producto.resolver.ts) | TypeScript | 32 | 0 | 11 | 43 |
+| [src/producto/producto.service.spec.ts](/src/producto/producto.service.spec.ts) | TypeScript | 104 | 0 | 20 | 124 |
+| [src/producto/producto.service.ts](/src/producto/producto.service.ts) | TypeScript | 61 | 21 | 5 | 87 |
+| [src/receta/receta.controller.ts](/src/receta/receta.controller.ts) | TypeScript | 48 | 0 | 9 | 57 |
+| [src/receta/receta.dto.ts](/src/receta/receta.dto.ts) | TypeScript | 26 | 0 | 8 | 34 |
+| [src/receta/receta.entity.ts](/src/receta/receta.entity.ts) | TypeScript | 29 | 0 | 8 | 37 |
+| [src/receta/receta.module.ts](/src/receta/receta.module.ts) | TypeScript | 13 | 0 | 2 | 15 |
+| [src/receta/receta.resolver.ts](/src/receta/receta.resolver.ts) | TypeScript | 32 | 0 | 7 | 39 |
+| [src/receta/receta.service.spec.ts](/src/receta/receta.service.spec.ts) | TypeScript | 119 | 0 | 24 | 143 |
+| [src/receta/receta.service.ts](/src/receta/receta.service.ts) | TypeScript | 49 | 0 | 10 | 59 |
+| [src/region/region.controller.ts](/src/region/region.controller.ts) | TypeScript | 48 | 0 | 6 | 54 |
+| [src/region/region.dto.ts](/src/region/region.dto.ts) | TypeScript | 13 | 0 | 3 | 16 |
+| [src/region/region.entity.ts](/src/region/region.entity.ts) | TypeScript | 19 | 0 | 5 | 24 |
+| [src/region/region.module.ts](/src/region/region.module.ts) | TypeScript | 14 | 0 | 1 | 15 |
+| [src/region/region.resolver.ts](/src/region/region.resolver.ts) | TypeScript | 32 | 1 | 10 | 43 |
+| [src/region/region.service.spec.ts](/src/region/region.service.spec.ts) | TypeScript | 88 | 0 | 16 | 104 |
+| [src/region/region.service.ts](/src/region/region.service.ts) | TypeScript | 46 | 0 | 8 | 54 |
+| [src/restaurante/restaurante.controller.ts](/src/restaurante/restaurante.controller.ts) | TypeScript | 49 | 0 | 3 | 52 |
+| [src/restaurante/restaurante.dto.ts](/src/restaurante/restaurante.dto.ts) | TypeScript | 21 | 0 | 8 | 29 |
+| [src/restaurante/restaurante.entity.ts](/src/restaurante/restaurante.entity.ts) | TypeScript | 26 | 0 | 10 | 36 |
+| [src/restaurante/restaurante.module.ts](/src/restaurante/restaurante.module.ts) | TypeScript | 12 | 0 | 2 | 14 |
+| [src/restaurante/restaurante.resolver.ts](/src/restaurante/restaurante.resolver.ts) | TypeScript | 32 | 0 | 6 | 38 |
+| [src/restaurante/restaurante.service.spec.ts](/src/restaurante/restaurante.service.spec.ts) | TypeScript | 107 | 0 | 23 | 130 |
+| [src/restaurante/restaurante.service.ts](/src/restaurante/restaurante.service.ts) | TypeScript | 53 | 18 | 8 | 79 |
+| [src/shared/errors/business-errors.ts](/src/shared/errors/business-errors.ts) | TypeScript | 9 | 0 | 2 | 11 |
+| [src/shared/interceptors/business-errors.interceptor.ts](/src/shared/interceptors/business-errors.interceptor.ts) | TypeScript | 21 | 0 | 2 | 23 |
+| [src/shared/security/jwtConstants.ts](/src/shared/security/jwtConstants.ts) | TypeScript | 5 | 0 | 2 | 7 |
+| [src/shared/testing-utils/typeorm-testing-config.ts](/src/shared/testing-utils/typeorm-testing-config.ts) | TypeScript | 20 | 0 | 5 | 25 |
+| [src/usuario/role.enum.ts](/src/usuario/role.enum.ts) | TypeScript | 30 | 0 | 2 | 32 |
+| [src/usuario/roles.decorator.ts](/src/usuario/roles.decorator.ts) | TypeScript | 3 | 0 | 3 | 6 |
+| [src/usuario/usuario.controller.ts](/src/usuario/usuario.controller.ts) | TypeScript | 13 | 0 | 4 | 17 |
+| [src/usuario/usuario.entity.ts](/src/usuario/usuario.entity.ts) | TypeScript | 7 | 0 | 1 | 8 |
+| [src/usuario/usuario.module.ts](/src/usuario/usuario.module.ts) | TypeScript | 11 | 0 | 3 | 14 |
+| [src/usuario/usuario.service.spec.ts](/src/usuario/usuario.service.spec.ts) | TypeScript | 33 | 1 | 8 | 42 |
+| [src/usuario/usuario.service.ts](/src/usuario/usuario.service.ts) | TypeScript | 42 | 0 | 3 | 45 |
+| [src/usuario/usuario.ts](/src/usuario/usuario.ts) | TypeScript | 13 | 0 | 4 | 17 |
+| [test/app.e2e-spec.ts](/test/app.e2e-spec.ts) | TypeScript | 20 | 0 | 5 | 25 |
+| [test/jest-e2e.json](/test/jest-e2e.json) | JSON | 9 | 0 | 1 | 10 |
+| [tsconfig.build.json](/tsconfig.build.json) | JSON | 3 | 2 | 0 | 5 |
+| [tsconfig.json](/tsconfig.json) | JSON with Comments | 21 | 0 | 1 | 22 |
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
